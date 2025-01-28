@@ -1,4 +1,5 @@
 import express from 'express';
+import "reflect-metadata"
 import { AuthController } from './controllers/AuthController.js';
 
 const router = express.Router();
