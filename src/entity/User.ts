@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
+import { Tenant } from "./Tenant"
 
 @Entity()
 export class User {
@@ -17,5 +18,8 @@ export class User {
 
     @Column()
     password: string
+
+    @ManyToOne(()=>Tenant)
+    tenant: Tenant
 
 }
