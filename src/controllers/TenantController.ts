@@ -20,5 +20,10 @@ export class TenantController {
         res.status(200).send({json:res1});
     }
 
+    async findAll(req:Request,res:Response) {
+        const res1 =  await this.service.findAll();
+        res.status(200).send({json:res1});
+    }
+
 
 }

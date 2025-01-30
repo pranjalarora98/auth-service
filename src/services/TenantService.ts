@@ -18,5 +18,10 @@ export class TenantService {
         return res;
     }
 
+    async findAll(id:string){
+        const res = await this.repository.find()
+        console.log('res',res);
+        return res;
+    }
 
 }

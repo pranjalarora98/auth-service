@@ -1,6 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
 import { Tenant } from "./Tenant"
 
+enum roles {CUSTOMER='customer',ADMIN='admin'}
+
 @Entity()
 export class User {
 
@@ -21,5 +23,12 @@ export class User {
 
     @ManyToOne(()=>Tenant)
     tenant: Tenant
+
+    @Column({
+      type:'enum',
+      enum: roles,
+      default: roles.CUSTOMER
+    })
+    role: roles
 
 }
