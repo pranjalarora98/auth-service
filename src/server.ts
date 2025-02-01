@@ -2,6 +2,7 @@ import express,{Request,Response} from 'express';
 import "reflect-metadata"
 import { AuthController } from './controllers/AuthController';
 import { TenantController } from './controllers/TenantController';
+import cors from 'cors';
 import { AppDataSource } from './data-source';
 import { Tenant } from './entity/Tenant';
 import { TenantService } from './services/TenantService';
@@ -9,6 +10,7 @@ import { TenantService } from './services/TenantService';
 const router = express.Router();
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 AppDataSource.initialize().then(()=>{
@@ -19,9 +21,15 @@ AppDataSource.initialize().then(()=>{
     const tenantService = new TenantService();
     const tenantController = new TenantController(tenantService);
 
-    router.post('/auth/register', (req:any, res:any) => {
+    router.post('/api/auth/auth/register', (req:any, res:any) => {
         console.log('register');
         authController.register(req, res);
+    })
+
+    router.post('/api/auth/auth/login', async (req:any, res:any) => {
+        console.log('login');
+        const res1 = await authController.login(req, res);
+        return res.status(200).json({data:res1});
     })
     
     router.post('/auth/tenant/create',async (req:Request,res:Response)=>{

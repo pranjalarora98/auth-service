@@ -15,4 +15,10 @@ export class AuthController {
         res.status(201).json({ firstName, lastName });
     }
 
+    async login(req:Request, res:Response) {
+        const { email } = req.body;
+        const res1 = await this.repository.findBy({email});
+        return res1;
+    }
+
 }

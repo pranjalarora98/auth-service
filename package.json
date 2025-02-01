@@ -13,6 +13,7 @@
    "author": "",
    "license": "ISC",
    "dependencies": {
+      "cors": "^2.8.5",
       "express": "^4.21.2",
       "nodemon": "^3.1.9",
       "pg": "^8.4.0",
@@ -20,6 +21,7 @@
       "typeorm": "0.3.20"
    },
    "devDependencies": {
+      "@types/cors": "^2.8.17",
       "@types/express": "^5.0.0",
       "@types/node": "^16.18.125",
       "ts-node": "^10.9.2",
