@@ -1,6 +1,7 @@
 import { User } from '../entity/User';
 import {AppDataSource} from '../data-source';
 import { Request,Response } from 'express';
+import {sign} from 'jsonwebtoken';
 
 export class AuthController {
      
@@ -17,7 +18,15 @@ export class AuthController {
 
     async login(req:Request, res:Response) {
         const { email } = req.body;
-        const res1 = await this.repository.findBy({email});
+        console.log('dffd');
+        const res1:any = await this.repository.findOneBy({email});
+        console.log('dffd',res1);
+        const payload =  {
+            id:res1.id, 
+            email:res1.email   
+        }
+        const token = sign(payload,'dffd');
+        console.log('fdfd',token);       
         return res1;
     }
 
