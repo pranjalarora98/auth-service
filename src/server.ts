@@ -42,6 +42,12 @@ AppDataSource.initialize().then(()=>{
         res.status(200).json({data:req.body});
     })
 
+    router.get('/api/auth/users', async (req:any, res:any) => {
+        console.log('get users');
+        const res1 = await authController.getAll(req, res);
+        return res.status(200).json({data:res1});
+    })
+
     
     app.use(router);
     

@@ -31,4 +31,9 @@ export class AuthController {
         return res1;
     }
 
+    async getAll(req:Request,res:Response) {
+         const res1 = await this.repository.find();
+         return res1;
+    }
+
 }
