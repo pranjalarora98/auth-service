@@ -29,7 +29,7 @@ AppDataSource.initialize().then(()=>{
     router.post('/api/auth/auth/login', async (req:any, res:any) => {
         console.log('login');
         const res1 = await authController.login(req, res);
-        return res.status(200).json({data:res1});
+        return res.status(200).json(res1);
     })
     
     router.post('/auth/tenant/create',async (req:Request,res:Response)=>{

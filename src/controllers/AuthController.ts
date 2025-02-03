@@ -27,6 +27,7 @@ export class AuthController {
         }
         const token = sign(payload,'dffd');
         console.log('fdfd',token);       
+        res.cookie('token',token)
         return res1;
     }
 
