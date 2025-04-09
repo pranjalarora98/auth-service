@@ -34,9 +34,8 @@ export class AuthController {
       id: res1.id,
       email: res1.email,
     };
-    const token = sign(payload, "dffd");
-    console.log("fdfd", token);
-    res.cookie("token", token);
+    const accessToken = this.tokenService.generateToken(payload);
+    res.cookie("token", accessToken);
     return res1;
   }
 

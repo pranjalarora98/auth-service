@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import "reflect-metadata";
+import cookieParser from "cookie-parser";
 import { AuthController } from "./controllers/AuthController";
 import { TenantController } from "./controllers/TenantController";
 import cors from "cors";
@@ -10,6 +11,8 @@ import { TenantService } from "./services/TenantService";
 const router = express.Router();
 
 const app = express();
+
+app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
 
@@ -24,7 +27,7 @@ AppDataSource.initialize().then(() => {
     authController.register(req, res);
   });
 
-  router.post("/api/auth/auth/login", async (req: any, res: any) => {
+  router.post("/login", async (req: any, res: any) => {
     console.log("login");
     const res1 = await authController.login(req, res);
     return res.status(200).json(res1);

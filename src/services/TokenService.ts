@@ -3,10 +3,10 @@ import path from "path";
 const fs = require("fs");
 
 interface tokenPayload {
-  tenantId: string;
-  email: string;
-  firstName: string;
-  lastName: string;
+  tenantId?: string;
+  email?: string;
+  firstName?: string;
+  lastName?: string;
 }
 
 const privateKey = fs.readFileSync(
