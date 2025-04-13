@@ -33,9 +33,14 @@ export class AuthController {
     const payload = {
       id: res1.id,
       email: res1.email,
+      firstName: res1.firstName,
+      lastName: res1.lastName,
     };
     const accessToken = this.tokenService.generateToken(payload);
-    res.cookie("token", accessToken);
+    res.cookie("token", accessToken, {
+      httpOnly: true,
+      secure: true,
+    });
     return res1;
   }
 
