@@ -18,7 +18,7 @@ class TokenService {
   generateToken(payload: tokenPayload) {
     const token = sign(payload, privateKey, {
       algorithm: "RS256",
-      expiresIn: "1h",
+      expiresIn: "1d",
     });
     return token;
   }

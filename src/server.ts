@@ -11,9 +11,8 @@ import { TenantService } from "./services/TenantService";
 const router = express.Router();
 
 const app = express();
-
-app.use(cookieParser());
 app.use(cors());
+app.use(cookieParser());
 app.use(express.json());
 
 AppDataSource.initialize().then(() => {
