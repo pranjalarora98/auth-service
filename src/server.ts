@@ -32,12 +32,13 @@ AppDataSource.initialize().then(() => {
     return res.status(200).json(res1);
   });
 
-  router.post("/api/auth/tenants", async (req: Request, res: Response) => {
+  router.post("/tenants", async (req: Request, res: Response) => {
     await tenantController.create(req, res);
     res.status(200).json({ data: req.body });
   });
 
-  router.get("/api/auth/tenants", async (req: Request, res: Response) => {
+  router.get("/tenants", async (req: Request, res: Response) => {
+    console.log("tenant");
     const res1 = await tenantController.findAll(req, res);
     // res.status(200).json(res1);
   });
